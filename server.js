@@ -1,7 +1,15 @@
 const express = require('express')
+const expressLayouts = require('express-ejs-layouts')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 const PORT = 3000
+
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
+app.use(expressLayouts)
+app.set('layout', './layouts/layout')
+app.set('view engine', 'ejs')
+
 
 let database,
     databaseName = 'cookingSocial'
@@ -12,13 +20,17 @@ MongoClient.connect('mongodb+srv://admin:admin@food.qhpfysz.mongodb.net/?retryWr
         database = client.db(databaseName) // creates a database
     })
 
-app.use(express.static('public'))
-app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: true }))
-
 app.get('/', async (req,res) => {
+    res.render('index.ejs', {tittle: 'Home page'})
+})
+
+app.get('/recipes', async (req,res) => {
     const allRecipes = await database.collection('recipes').find().toArray()
-    res.render('index.ejs', {recipes: allRecipes})
+    res.render('recipes.ejs', {recipes: allRecipes})
+})
+
+app.get('/submission', async (req,res) => {
+    res.render('submission.ejs', {tittle: 'Home page'})
 })
 
 app.post('/add-recipe', (req,res) => {
