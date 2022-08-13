@@ -7,7 +7,7 @@ const PORT = 3000
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(expressLayouts)
-app.set('layout', './layouts/layout')
+app.set('layout', 'layouts/layout')
 app.set('view engine', 'ejs')
 
 
@@ -21,16 +21,16 @@ MongoClient.connect('mongodb+srv://admin:admin@food.qhpfysz.mongodb.net/?retryWr
     })
 
 app.get('/', async (req,res) => {
-    res.render('index.ejs', {tittle: 'Home page'})
+    res.render('index', {tittle: 'Home page'})
 })
 
 app.get('/recipes', async (req,res) => {
     const allRecipes = await database.collection('recipes').find().toArray()
-    res.render('recipes.ejs', {recipes: allRecipes})
+    res.render('recipes', {recipes: allRecipes})
 })
 
 app.get('/submission', async (req,res) => {
-    res.render('submission.ejs', {tittle: 'Home page'})
+    res.render('submission', {tittle: 'Home page'})
 })
 
 app.post('/add-recipe', (req,res) => {
