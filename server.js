@@ -1,10 +1,12 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
-const MongoClient = require("mongodb").MongoClient;
-const PORT = 3000;
+const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 
+require('dotenv').config({path: './config/.env'})
+
+connectDB()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -12,16 +14,6 @@ app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 app.set("view engine", "ejs");
 
-let database,
-  databaseName = "cookingSocial";
-
-// MongoClient.connect(
-//   "mongodb+srv://admin:admin@food.qhpfysz.mongodb.net/?retryWrites=true&w=majority",
-//   { useUnifiedTopology: true }
-// ).then((client) => {
-//   console.log(`Connected to ${databaseName} Database`);
-//   database = client.db(databaseName); // creates a database
-// });
 
 app.use('/', homeRoutes)
 
@@ -51,4 +43,6 @@ app.use('/', homeRoutes)
 //     });
 // });
 
-app.listen(PORT, console.log("Server running"));
+app.listen(process.env.PORT, () => {
+  console.log("Server running")
+});
