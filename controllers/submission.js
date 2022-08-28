@@ -1,3 +1,5 @@
+const Recipe = require('../models/Recipe')
+
 module.exports = {
     index: (req,res) => {
         res.render('submission')
