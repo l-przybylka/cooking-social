@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const RecipeSchema = new mongoose.schema({
+const RecipeSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -11,11 +11,11 @@ const RecipeSchema = new mongoose.schema({
     },
     instructions: {
         type: String,
-        required: true
+        // required: true
     },
     difficulty: {
         type: String,
-        required: true
+        // required: true
     }
 })
 

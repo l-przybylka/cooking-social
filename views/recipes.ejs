@@ -1,4 +1,4 @@
-<% for( let i = 0; i < recipes.length; i++ ) { %>
+<% for( let i = 0; i < recipe.length; i++ ) { %>
 <div class="col mb-5">
   <div class="card h-100">
     <!-- Sale badge-->
@@ -6,7 +6,7 @@
       class="badge bg-dark text-white position-absolute"
       style="top: 0.5rem; right: 0.5rem"
     >
-      <%= recipes[i].difficulty %>
+      <%= recipe[i].difficulty %>
     </div>
     <!-- Product image-->
     <img
@@ -18,9 +18,9 @@
     <div class="card-body p-4">
       <div class="text-center">
         <!-- Product name-->
-        <h5 class="fw-bolder"><%= recipes[i].title %></h5>
+        <h5 class="fw-bolder"><%= recipe[i].title %></h5>
         <!-- Product author-->
-        <h5 class="fw-bolder">By: <%= recipes[i].author %></h5>
+        <h5 class="fw-bolder">By: <%= recipe[i].author %></h5>
         <!-- Product price-->
       </div>
     </div>
