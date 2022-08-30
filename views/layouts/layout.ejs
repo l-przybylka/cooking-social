@@ -20,9 +20,20 @@
     <link href="./css/styles.css" rel="stylesheet" />
     <!-- Medium Editor -->
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/css/themes/tim.min.css" integrity="sha512-KS1xLRy/wwaLAJVtF/BzoBFu4WeXFevvTp8lK4TH6fhb+EeDtKvFas/3ENs3DuIXHnu2gozqoVqsYyRsvM6hxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css"
+      type="text/css"
+      media="screen"
+      charset="utf-8"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/css/themes/tim.min.css"
+      integrity="sha512-KS1xLRy/wwaLAJVtF/BzoBFu4WeXFevvTp8lK4TH6fhb+EeDtKvFas/3ENs3DuIXHnu2gozqoVqsYyRsvM6hxg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Navigation-->
@@ -78,15 +89,11 @@
         </div>
       </div>
     </header>
-    <section class="py-5">
-      <div class="container px-4 px-lg-5 mt-5">
-        <div
-          class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        >
+
+    <!-- Body -->
+   
           <%- body -%>
-        </div>
-      </div>
-    </section>
+ 
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
@@ -101,6 +108,8 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <!-- Medium editor -->
-    <script>var editor = new MediumEditor('.editable');</script>
+    <script>
+      var editor = new MediumEditor(".editable");
+    </script>
   </body>
 </html>
