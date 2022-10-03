@@ -1,3 +1,4 @@
+<%- include('partials/header') -%>
 <form action="/submission/add-recipe" method="post">
   <input type="text" placeholder="title" name="title" />
   <input type="text" placeholder="author" name="author" />
@@ -11,4 +12,4 @@
   <input type="text" class="editable" placeholder="instructions" name="instructions">
   <input type="submit" />
 </form>
-
+<%- include('partials/footer') -%>
