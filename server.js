@@ -13,7 +13,6 @@ const connectDB = require("./config/database"); // connects to mongo
 // routes 
 const homeRoutes = require('./routes/home')
 const recipesRoutes = require('./routes/recipes')
-const submissionRoutes = require('./routes/submission')
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -62,7 +61,6 @@ app.use(flash());
 
 app.use('/', homeRoutes)
 app.use('/recipes', recipesRoutes)
-app.use('/submission', submissionRoutes)
 
 app.listen(process.env.PORT, () => {
   console.log("Server running")
