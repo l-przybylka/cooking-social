@@ -15,7 +15,7 @@ const homeRoutes = require('./routes/home')
 const recipesRoutes = require('./routes/recipes')
 const submissionRoutes = require('./routes/submission')
 
-//Use .env file in config folder
+//Use .env file in config folder test
 require("dotenv").config({ path: "./config/.env" });
 
 // Passport config
