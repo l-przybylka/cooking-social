@@ -9,11 +9,14 @@
         <p><strong>Email</strong>: <%= user.email %></p>
         <a href="/logout" class="col-3 btn btn-primary">Logout</a>
       </div>
+      <div class="row justify-content-center mt-5">
+        <a class="btn btn-primary" href="/recipes">Return to Feed</a>
+      </div> 
       <div class="mt-5">
         <%# Post %>
 
         <h2>Add a recipe</h2>
-        <for m action="#" enctype="multipart/form-data" method="POST">
+        <form action="/profile-add-recipe" enctype="multipart/form-data" method="POST">
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input
@@ -27,11 +30,11 @@
 
           <div class="mb-3">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" checked>
+              <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy" checked>
               <label class="btn btn-outline-success" for="easy">Easy</label>
-              <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off" checked="">
+              <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off" value="moderate" checked="">
               <label class="btn btn-outline-warning" for="moderate">Moderate</label>
-              <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" checked="">
+              <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard" checked="">
               <label class="btn btn-outline-danger" for="hard">Hard</label>
             </div>
           </div>
@@ -69,14 +72,14 @@
   <% for(var i=0; i<posts.length; i++) {%>
     <li class="col-6 justify-content-between mt-5">
       <a href="/post/<%= posts[i]._id%>">
+        <%= posts[i].title %>
+        <%= posts[i].difficulty %>  
         <img class="img-fluid" src="<%= posts[i].image%>">
       </a>
     </li>
   <% } %>
   </ul>
-  <div class="row justify-content-center mt-5">
-    <a class="btn btn-primary" href="/recipes">Return to Feed</a>
-  </div>  
+ 
 </div>  
 </div>
 </div>
