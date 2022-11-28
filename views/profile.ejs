@@ -1,9 +1,10 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-6">
-      <%# User section and add post %>
+<div class="container text-center">
+  <div class="row">
 
+    <%# User section and add post %>
+
+    <div class="col-12 col-md-6">
       <div>
         <p><strong>User Name</strong>: <%= user.userName %></p>
         <p><strong>Email</strong>: <%= user.email %></p>
@@ -12,7 +13,7 @@
       <div class="row justify-content-center mt-5">
         <a class="btn btn-primary" href="/recipes">Return to Feed</a>
       </div> 
-      <div class="mt-5">
+    
         <%# Post %>
 
         <h2>Add a recipe</h2>
@@ -61,27 +62,36 @@
           </button>
         </form>
 
-        <%# Current posts by the user %>
+        
       </div>
+
+      <%# Current posts by the user %>
+
+      <div class="col-12 col-md-6">
+        <ul class="row list-unstyled">
+          <% for(var i=0; i<posts.length; i++) { %>
+            <li class="col-6 justify-content-between mt-5">
+               <% if (posts[i].difficulty === 'easy') { %>
+                  <span class="badge rounded-pill bg-success">Easy</span>
+                <% } else if (posts[i].difficulty === 'moderate') { %>
+                  <span class="badge rounded-pill bg-warning">Moderate</span>
+                <% } else { %>
+                  <span class="badge rounded-pill bg-danger">Hard</span>
+                <% } %>
+                <a href="/post/<%= posts[i]._id%>">
+                  <%= posts[i].title %>
+                  <img class="img-fluid" src="<%= posts[i].image%>">
+              </a>
+            </li>
+        <% } %>
+        </ul>
+       
+      </div>  
     </div>
+  </div>
+
   </div>
 </div>
 
-<div class="col-6">
-  <ul class="row list-unstyled">
-  <% for(var i=0; i<posts.length; i++) {%>
-    <li class="col-6 justify-content-between mt-5">
-      <a href="/post/<%= posts[i]._id%>">
-        <%= posts[i].title %>
-        <%= posts[i].difficulty %>  
-        <img class="img-fluid" src="<%= posts[i].image%>">
-      </a>
-    </li>
-  <% } %>
-  </ul>
- 
-</div>  
-</div>
-</div>
-</div>
+
 <%- include('partials/footer') -%>
