@@ -14,5 +14,6 @@ router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 router.get("/profile", ensureAuth, recipesController.getProfile);
 router.post("/profile-add-recipe", upload.single("file"), recipesController.createPost)
+router.get("/post/:id", recipesController.getPost)
 
 module.exports = router

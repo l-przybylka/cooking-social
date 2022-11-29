@@ -14,9 +14,11 @@ JS,EJS,MONGOOSE,MONGO,EXPRESS,NODE
 
 TO DO: 
 
-homepage to have a carousel with the top rated products or at least manually selected top / most popular and the automatic pulling as a extra feature in the future
 
 each post needs to have it's own page
+
+homepage to have a carousel with the top rated products or at least manually selected top / most popular and the automatic pulling as a extra feature in the future
+
 
 recipes page has to pull all the details: image, labels etc. 
 
