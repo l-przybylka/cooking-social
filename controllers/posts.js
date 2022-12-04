@@ -1,12 +1,19 @@
 const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
-const Comment = require("../models/Comment")
-// const User = require("../models/User")
+const Recipe = require("../models/Recipe");
+const Comment = require("../models/Comment");
 
 module.exports = {
+  getRecipes: async (req, res) => {
+    try {
+      const recipes = await Recipe.find();
+      res.render("recipes.ejs", { recipe: recipes });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
+      const posts = await Recipe.find({ user: req.user.id });
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -14,7 +21,7 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const posts = await Recipe.find().sort({ createdAt: "desc" }).lean();
       res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
@@ -22,18 +29,19 @@ module.exports = {
   },
   getPost: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      //   Comment.find({post: req.params.id}).populate('user').exec(function (err, comment) {
-      //   if (err) return handleError(err);
-      //   console.log('The user is: ', comment.user.userName);
-      // });
-      const comments = await Comment.find({post: req.params.id}).populate('user').sort({ createdAt: "desc" }).lean();
+      const post = await Recipe.findById(req.params.id);
 
-      
-    
+      const comments = await Comment.find({ post: req.params.id })
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        .lean();
 
-      console.log(req.user.userName)
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      console.log(req.user.userName);
+      res.render("post.ejs", {
+        post: post,
+        user: req.user,
+        comments: comments,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -42,12 +50,13 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
-      await Post.create({
+      console.log(req.body)
+      await Recipe.create({
         title: req.body.title,
         image: result.secure_url,
+        difficulty: req.body.difficulty,
+        instructions: req.body.instructions,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
         likes: 0,
         user: req.user.id,
       });
@@ -59,14 +68,14 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
+      await Recipe.findOneAndUpdate(
         { _id: req.params.id },
         {
           $inc: { likes: 1 },
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/recipe/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
@@ -74,11 +83,11 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Find post by id
-      let post = await Post.findById({ _id: req.params.id });
+      let post = await Recipe.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+      await cloudinary.uploader.destroy(Recipe.cloudinaryId);
       // Delete post from db
-      await Post.remove({ _id: req.params.id });
+      await Recipe.remove({ _id: req.params.id });
       console.log("Deleted Post");
       res.redirect("/profile");
     } catch (err) {
