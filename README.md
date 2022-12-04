@@ -10,8 +10,6 @@ JS,EJS,MONGOOSE,MONGO,EXPRESS,NODE
 
 // what I've learned
 
-testsdfasdf
-
 TO DO: 
 
 
