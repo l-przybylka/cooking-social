@@ -1,11 +1,14 @@
 const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
+const User = require("../models/User")
 
 module.exports = {
   getRecipes: async (req, res) => {
     try {
-      const recipes = await Recipe.find();
+      const recipes = await Recipe.find()
+        .populate("user");
+    
       res.render("recipes.ejs", { recipe: recipes });
     } catch (err) {
       console.log(err);
@@ -15,14 +18,6 @@ module.exports = {
     try {
       const posts = await Recipe.find({ user: req.user.id });
       res.render("profile.ejs", { posts: posts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Recipe.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +32,7 @@ module.exports = {
         .lean();
 
       console.log(req.user.userName);
-      res.render("post.ejs", {
+      res.render("recipe.ejs", {
         post: post,
         user: req.user,
         comments: comments,

@@ -13,8 +13,8 @@ const connectDB = require("./config/database"); // connects to mongo
 // routes 
 const homeRoutes = require('./routes/home')
 const recipesRoutes = require('./routes/recipes')
-const postRoutes = require('./routes/post')
 const commentRoutes = require('./routes/comments')
+const profileRoutes = require('./routes/profile')
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -25,7 +25,7 @@ require("./config/passport")(passport);
 //Connect To Database
 connectDB();
 
-//Using EJS for views
+//Using EJS for views 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
@@ -63,8 +63,8 @@ app.use(flash());
 
 app.use('/', homeRoutes)
 app.use('/recipes', recipesRoutes)
-app.use('/post', postRoutes)
 app.use('/comment', commentRoutes)
+app.use('/profile', profileRoutes)
 
 app.listen(process.env.PORT, () => {
   console.log("Server running")

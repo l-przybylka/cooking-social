@@ -26,6 +26,7 @@
 <h2>comments</h2>
 <ul>
   <% for(let i=0; i<comments.length; i++) {%>
+    <%= console.log(comments[i]) %> 
     <li class="col-6 justify-content-between mt-5">
       <%=comments[i].user.userName%>: <%=comments[i].comment%>
       <span class="d-block text-muted">Likes: <%=comments[i].likes %></span>
