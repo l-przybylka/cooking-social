@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
-const recipesController = require("../controllers/recipes");
+const profileController = require("../controllers/profile");
 
-router.get("/profile", ensureAuth, recipesController.getProfile);
+router.get('/profile/:id', ensureAuth, profileController.getProfile);
+
+module.exports = router

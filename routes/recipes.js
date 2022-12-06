@@ -6,9 +6,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 
 router.get('/', ensureAuth, recipesController.getRecipes)
-router.get('/post/:id', recipesController.getPost)
-router.post("/profile-add-recipe", upload.single("file"), recipesController.createPost)
-router.get("/profile/:id", recipesController.getProfile)
+router.get('/post/:id', recipesController.getRecipe)
+router.post("/profile-add-recipe", upload.single("file"), recipesController.createRecipe)
 // router.get("/:id", ensureAuth, postsController.getPost);
 // router.post("/createPost", upload.single("file"), postsController.createPost);
 // router.put("/likePost/:id", postsController.likePost);

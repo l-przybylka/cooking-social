@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
-const User = require("../models/User")
+// const User = require("../models/User")
 
 module.exports = {
   getRecipes: async (req, res) => {
@@ -14,15 +14,7 @@ module.exports = {
       console.log(err);
     }
   },
-  getProfile: async (req, res) => {
-    try {
-      const posts = await Recipe.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  getPost: async (req, res) => {
+  getRecipe: async (req, res) => {
     try {
       const post = await Recipe.findById(req.params.id);
 
@@ -41,7 +33,7 @@ module.exports = {
       console.log(err);
     }
   },
-  createPost: async (req, res) => {
+  createRecipe: async (req, res) => {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
@@ -61,7 +53,7 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  likeRecipe: async (req, res) => {
     try {
       await Recipe.findOneAndUpdate(
         { _id: req.params.id },
@@ -75,7 +67,7 @@ module.exports = {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  deleteRecipe: async (req, res) => {
     try {
       // Find post by id
       let post = await Recipe.findById({ _id: req.params.id });
