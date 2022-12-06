@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect("/profile");
+    return res.redirect("/");
   }
   res.render("login", {
     title: "Login",
@@ -107,10 +107,11 @@ exports.postSignup = (req, res, next) => {
           return next(err);
         }
         req.logIn(user, (err) => {
+          console.log(user);
           if (err) {
             return next(err);
           }
-          res.redirect("/profile");
+          res.redirect("/");
         });
       });
     }

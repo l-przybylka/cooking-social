@@ -8,7 +8,7 @@ module.exports = {
             const recipes = await Recipe.find({ user: req.params.id })
             const userInfo = await User.find({ user: req.params.id })
 
-            res.render('profile.ejs', { recipe: recipes, user: userInfo})
+            res.render('profile.ejs', { recipe: recipes, user: req.user})
         } catch (err) {
             console.log(err);
         }

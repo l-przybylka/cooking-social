@@ -17,7 +17,7 @@
         <%# Post %>
 
         <h2>Add a recipe</h2>
-        <form action="/profile-add-recipe" enctype="multipart/form-data" method="POST">
+        <form action="/recipes/add-recipe" enctype="multipart/form-data" method="POST">
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input
@@ -69,18 +69,18 @@
 
       <div class="col-12 col-md-6">
         <ul class="row list-unstyled">
-          <% for(var i=0; i<posts.length; i++) { %>
+          <% for(var i=0; i<recipe.length; i++) { %>
             <li class="col-6 justify-content-between mt-5">
-               <% if (posts[i].difficulty === 'easy') { %>
+               <% if (recipe[i].difficulty === 'easy') { %>
                   <span class="badge rounded-pill bg-success">Easy</span>
-                <% } else if (posts[i].difficulty === 'moderate') { %>
+                <% } else if (recipe[i].difficulty === 'moderate') { %>
                   <span class="badge rounded-pill bg-warning">Moderate</span>
                 <% } else { %>
                   <span class="badge rounded-pill bg-danger">Hard</span>
                 <% } %>
-                <a href="/post/<%= posts[i]._id%>">
-                  <%= posts[i].title %>
-                  <img class="img-fluid" src="<%= posts[i].image%>">
+                <a href="/recipe/<%= recipe[i]._id%>">
+                  <%= recipe[i].title %>
+                  <img class="img-fluid" src="<%= recipe[i].image%>">
               </a>
             </li>
         <% } %>
