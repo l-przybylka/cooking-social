@@ -5,7 +5,6 @@
         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
       >
   <% for( let i = 0; i < recipe.length; i++ ) { %>
-    <%= console.log(recipe[i]) %> 
   <div class="col mb-5">
     <div class="card h-100">
       <!-- Sale badge-->
@@ -41,7 +40,7 @@
       <!-- Product actions-->
       <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
         <div class="text-center">
-          <a class="btn btn btn-info mt-auto" href="/post/<%= recipe[i]._id %>">View recipe</a>
+          <a class="btn btn btn-info mt-auto" href="/recipes/recipe/<%= recipe[i]._id %>">View recipe</a>
         </div>
       </div>
     </div>

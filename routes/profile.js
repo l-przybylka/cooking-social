@@ -5,4 +5,5 @@ const profileController = require("../controllers/profile");
 
 router.get('/profile/:id', ensureAuth, profileController.getProfile);
 
+
 module.exports = router
