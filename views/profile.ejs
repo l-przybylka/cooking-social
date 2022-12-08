@@ -5,56 +5,57 @@
       <%# User section and add post %>
 
         <div class="col-12 col-md-6">
-          <%= console.log(visitor,author) %> 
-          <%if(visitor._id==author._id){ %>
-            <div>
-              <p><strong>User Name</strong>: <%= author.userName %>
-              </p>
-              <p><strong>Email</strong>: <%= author.email %>
-              </p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-            </div>
-            <div class="row justify-content-center mt-5">
-              <a class="btn btn-primary" href="/recipes">Return to Feed</a>
-            </div>
+          <%= console.log(visitor.userName.toString()==author.userName.toString()) %>
+            <%if(visitor._id.toString()==author._id.toString()){ %>
 
-            <%# Post %>
-              <h2>Add a recipe</h2>
-              <form action="/recipes/add-recipe" enctype="multipart/form-data" method="POST">
-                <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" placeholder="My tasty new recipe..." class="form-control" id="title"
-                    name="title" />
-                </div>
-
-                <div class="mb-3">
-                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy"
-                      checked>
-                    <label class="btn btn-outline-success" for="easy">Easy</label>
-                    <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off"
-                      value="moderate" checked="">
-                    <label class="btn btn-outline-warning" for="moderate">Moderate</label>
-                    <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard"
-                      checked="">
-                    <label class="btn btn-outline-danger" for="hard">Hard</label>
+              <div>
+                <p><strong>User Name</strong>: <%= author.userName %>
+                </p>
+                <p><strong>Email</strong>: <%= author.email %>
+                </p>
+                <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+              </div>
+              <div class="row justify-content-center mt-5">
+                <a class="btn btn-primary" href="/recipes">Return to Feed</a>
+              </div>
+              
+              <%# Post %>
+                <h2>Add a recipe</h2>
+                <form action="/recipes/add-recipe" enctype="multipart/form-data" method="POST">
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" placeholder="My tasty new recipe..." class="form-control" id="title"
+                      name="title" />
                   </div>
-                </div>
-                <div class="mb-3">
-                  <label for="instructions" class="form-label">Instructions</label>
-                  <textarea class="form-control" placeholder="Here is how to make it..." id="instructions"
-                    name="instructions"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imgUpload" class="form-label">Image</label>
-                  <input type="file" class="form-control" id="imageUpload" name="file" />
-                </div>
-                <button type="submit" class="btn btn-primary" value="Upload">
-                  Submit
-                </button>
-              </form>
 
-              <%}%>
+                  <div class="mb-3">
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                      <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy"
+                        checked>
+                      <label class="btn btn-outline-success" for="easy">Easy</label>
+                      <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off"
+                        value="moderate" checked="">
+                      <label class="btn btn-outline-warning" for="moderate">Moderate</label>
+                      <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard"
+                        checked="">
+                      <label class="btn btn-outline-danger" for="hard">Hard</label>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="instructions" class="form-label">Instructions</label>
+                    <textarea class="form-control" placeholder="Here is how to make it..." id="instructions"
+                      name="instructions"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="imgUpload" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="imageUpload" name="file" />
+                  </div>
+                  <button type="submit" class="btn btn-primary" value="Upload">
+                    Submit
+                  </button>
+                </form>
+
+                <%}%>
         </div>
 
         <%# Current posts by the user %>
