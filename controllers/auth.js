@@ -107,11 +107,10 @@ exports.postSignup = (req, res, next) => {
           return next(err);
         }
         req.logIn(user, (err) => {
-          console.log(user);
           if (err) {
             return next(err);
           }
-          res.redirect("/");
+          res.redirect(`/profile/${user.id}`);
         });
       });
     }
