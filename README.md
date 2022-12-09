@@ -12,9 +12,16 @@ JS,EJS,MONGOOSE,MONGO,EXPRESS,NODE
 
 TO DO: 
 
+Make it more obvious that you are on someone elses profile? some header maybe or a welcome message
+
+sort header: that should have log in and log out buttons and a link to the profile
+
 homepage to have a carousel with the top rated products or at least manually selected top / most popular and the automatic pulling as a extra feature in the future
 
-sort header 
+Extend on the profile page: 
+ - maybe a profile pic? probably not.
+ - option to change password maybe? 
 
-maybe a profile pic? probably not.
+
+
 
