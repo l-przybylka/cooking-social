@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const profileController = require("../controllers/profile");
 
-router.get('/:id', ensureAuth, profileController.getProfile);
+router.get('/id/:id', ensureAuth, profileController.getProfile);
+router.get('/mine', profileController.myProfile)
 
 module.exports = router

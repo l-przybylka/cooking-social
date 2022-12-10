@@ -12,5 +12,8 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
+    },
+    myProfile: (req,res) => {
+        res.redirect(`/profile/id/${req.user._id}`)
     }
 }
