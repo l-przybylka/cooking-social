@@ -12,7 +12,6 @@ JS,EJS,MONGOOSE,MONGO,EXPRESS,NODE
 
 TO DO: 
 
-Make it more obvious that you are on someone elses profile? some header maybe or a welcome message
 
 sort header: that should have log in and log out buttons and a link to the profile
 

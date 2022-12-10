@@ -1,4 +1,3 @@
-const Comment = require('../models/Comment')
 const Recipe = require('../models/Recipe')
 const User = require('../models/User')
 
