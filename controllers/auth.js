@@ -8,6 +8,7 @@ exports.getLogin = (req, res) => {
   }
   res.render("login", {
     title: "Login",
+    isLoggedIn: req.isAuthenticated()
   });
 };
 
@@ -62,6 +63,7 @@ exports.getSignup = (req, res) => {
   }
   res.render("signup", {
     title: "Create Account",
+    isLoggedIn: req.isAuthenticated()
   });
 };
 

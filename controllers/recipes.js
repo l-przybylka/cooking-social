@@ -9,7 +9,7 @@ module.exports = {
       const recipes = await Recipe.find()
         .populate("user");
     
-      res.render("recipes.ejs", { recipe: recipes });
+      res.render("recipes.ejs", { recipe: recipes, isLoggedIn: req.isAuthenticated() });
     } catch (err) {
       console.log(err);
     }
@@ -28,6 +28,7 @@ module.exports = {
         post: post,
         user: req.user,
         comments: comments,
+        isLoggedIn: req.isAuthenticated()
       });
     } catch (err) {
       console.log(err);
