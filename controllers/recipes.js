@@ -49,7 +49,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect(`/profile/${req.user.id}`);
+      res.redirect(`/profile/id/${req.user.id}`);
     } catch (err) {
       console.log(err);
     }
