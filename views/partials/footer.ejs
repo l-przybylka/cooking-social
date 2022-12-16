@@ -20,35 +20,39 @@
 <script>
   // initialise editor to type in
   var Delta = Quill.import('delta');
-  var quill = new Quill('#editor-container', {
+  var quill = new Quill('.editor-container', {
     theme: 'snow'
   });
-  // where text will appear after clicking the button
-  var container = document.querySelector('#delta-container');
+
+
+
 
   
-const formButton = document.getElementById('getTextFromTheContainer')
-formButton.addEventListener('click', update) 
+const quillEditor = document.getElementsByClassName('editor-container')[0]
+const hiddenInstructions = document.getElementsByClassName('hiddenInstructions')[0]
+const potato = document.getElementById('potato')
+quillEditor.addEventListener('focusout', update) 
 
-update();
 
 function update() {
-  var contents = quill.getContents()
-  console.log(quill.root.innerHTML);
-  container.innerHTML = quill.root.innerHTML
+  //  contents = quill.getContents().ops
+  // console.log(contents);
+  hiddenInstructions.textContent = quill.root.innerHTML
+  // console.log(hiddenInstructions.textContent);
   // console.log('contents:', contents);
   // console.log('container Delta:', containerDelta);
 
  
   // var html = JSON.stringify(contents, null, 2);
-  // // if (delta) {
-  // //   console.log('change', delta)
-  // //   html = "change = " + JSON.stringify(delta, null, 2) + "\n\n" + html;
-  // // }
+  // if (delta) {
+  //   console.log('change', delta)
+  //   html = "change = " + JSON.stringify(delta, null, 2) + "\n\n" + html;
+  // }
   // container.innerHTML = html;
 
 
 }
+
 
 
 </script>

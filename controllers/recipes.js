@@ -22,8 +22,7 @@ module.exports = {
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean();
-
-      console.log(req.user.userName);
+     
       res.render("recipe.ejs", {
         post: post,
         user: req.user,
@@ -49,6 +48,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
+      
       res.redirect(`/profile/id/${req.user.id}`);
     } catch (err) {
       console.log(err);
