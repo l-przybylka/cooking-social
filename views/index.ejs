@@ -1,18 +1,23 @@
 <%- include('partials/header') -%>
 
 
-<div class="container">
-  <ul class="row justify-content-around mt-5">
-    <a href="/login" class="col-3 btn btn-outline-success">Login</a>
-    <a href="/signup" class="col-3 btn btn-outline-info">Register</a>
-  </ul>
-</div>
-<p>hey test</p>
-<div id="editor">
-<p>hey how will I appear in the consol?</p>
-</div>
-<button id="deltaContent">gimmie that text</button>
+  <div class="container">
+    <ul class="row justify-content-around mt-5">
+      <a href="/login" class="col-3 btn btn-outline-success">Login</a>
+      <a href="/signup" class="col-3 btn btn-outline-info">Register</a>
+    </ul>
+    <div class="justify-content-center">
+      <div id="editor-container">
+      </div>
+      <button id="getTextFromTheContainer">gimmie that text</button>
+    </div>
 
-<!-- https://getbootstrap.com/docs/5.2/components/carousel/ -->
+    <div id="delta-container"></div>
+    <p></p>
+  </div>
 
-<%- include('partials/footer') -%>
+
+
+  <!-- https://getbootstrap.com/docs/5.2/components/carousel/ -->
+
+  <%- include('partials/footer') -%>
