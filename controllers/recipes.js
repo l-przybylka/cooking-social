@@ -1,7 +1,9 @@
 const cloudinary = require("../middleware/cloudinary");
 const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
-const helpers = require("../public/js/helpers.js")
+
+
+
 // const User = require("../models/User")
 
 module.exports = {
@@ -23,13 +25,12 @@ module.exports = {
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean();
-     console.log(helpers)
+
       res.render("recipe.ejs", {
         post: post,
         user: req.user,
         comments: comments,
         isLoggedIn: req.isAuthenticated(),
-        helpers
       });
     } catch (err) {
       console.log(err);
