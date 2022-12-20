@@ -50,8 +50,6 @@
                   <textarea hidden class="form-control hiddenInstructions" id="instructions"
                     name="instructions"></textarea>
                 </div>
-                <div id="potato"></div>
-                
                 <div class="mb-3">
                   <label for="imgUpload" class="form-label">Image</label>
                   <input type="file" class="form-control" id="imageUpload" name="file" />
@@ -118,6 +116,29 @@
 
   </div>
   </div>
+  <!-- Include the Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
+
+  <script>
+    // <!-- Initialize Quill editor -->
+    var Delta = Quill.import('delta');
+    var quill = new Quill('.editor-container', {
+      theme: 'snow'
+    });
+
+    const quillEditor = document.getElementsByClassName('editor-container')[0]
+    const hiddenInstructions = document.getElementsByClassName('hiddenInstructions')[0]
+
+    quillEditor.addEventListener('focusout', update)
+
+
+    function update() {
+      hiddenInstructions.textContent = quill.root.innerHTML
+    }
+
+
+
+  </script>
 
   <%- include('partials/footer') -%>
