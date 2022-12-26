@@ -5831,6 +5831,10 @@ textarea.form-control-lg {
   position: relative;
 }
 
+.carousel-image {
+  height: 750px;
+}
+
 .carousel.pointer-event {
   touch-action: pan-y;
 }
