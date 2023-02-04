@@ -12,12 +12,7 @@ JS,EJS,MONGOOSE,MONGO,EXPRESS,NODE
 
 TO DO: 
 
-Implement QUILLJS to allow for formating of the text.
-
-homepage to have a carousel with the top rated products or at least manually selected top / most popular and the automatic pulling as a extra feature in the future
-
-Finish styling of the recipe page 
-
+finish the homepage, issue with images from cloudinary
 
 
 
