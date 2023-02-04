@@ -3,15 +3,12 @@ const Recipe = require("../models/Recipe");
 const Comment = require("../models/Comment");
 
 
-
-// const User = require("../models/User")
-
 module.exports = {
   getRecipes: async (req, res) => {
     try {
       const recipes = await Recipe.find()
         .populate("user");
-    
+
       res.render("recipes.ejs", { recipe: recipes, isLoggedIn: req.isAuthenticated() });
     } catch (err) {
       console.log(err);
@@ -19,15 +16,15 @@ module.exports = {
   },
   getRecipe: async (req, res) => {
     try {
-      const post = await Recipe.findById(req.params.id);
+      const recipe = await Recipe.findById(req.params.id);
 
-      const comments = await Comment.find({ post: req.params.id })
+      const comments = await Comment.find({ recipe: req.params.id })
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean();
-
+   
       res.render("recipe.ejs", {
-        post: post,
+        recipe: recipe,
         user: req.user,
         comments: comments,
         isLoggedIn: req.isAuthenticated(),
@@ -40,7 +37,7 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-      console.log(req.file.path)
+    
       await Recipe.create({
         title: req.body.title,
         image: result.secure_url,
@@ -50,8 +47,8 @@ module.exports = {
         likes: 0,
         user: req.user.id,
       });
-      console.log("Post has been added!");
-      
+
+
       res.redirect(`/profile/id/${req.user.id}`);
     } catch (err) {
       console.log(err);
@@ -73,13 +70,13 @@ module.exports = {
   },
   deleteRecipe: async (req, res) => {
     try {
-      // Find post by id
+ 
       let recipe = await Recipe.findById({ _id: req.params.id });
-      // Delete image from cloudinary
+     
       await cloudinary.uploader.destroy(recipe.cloudinaryId);
-      // Delete post from db
+    
       await Recipe.remove({ _id: req.params.id });
-      console.log("Deleted Post");
+  
       res.redirect("/recipes");
     } catch (err) {
       res.redirect("/recipes");

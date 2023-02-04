@@ -6,7 +6,7 @@ module.exports = {
         try {
             const recipes = await Recipe.find({ user: req.params.id })
             const userInfo = await User.findById({ _id: req.params.id })
-           
+  
             res.render('profile.ejs', { recipe: recipes, author: userInfo, visitor: req.user, isLoggedIn: req.isAuthenticated()})
 
         } catch (err) {

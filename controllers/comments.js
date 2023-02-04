@@ -10,7 +10,7 @@ module.exports = {
         post: req.params.id
       });
       console.log("Comment has been added!");
-      res.redirect("/post/"+req.params.id);
+      res.redirect("/recipes/recipe/" + req.params.id);
     } catch (err) {
       console.log(err);
     }
@@ -23,22 +23,20 @@ module.exports = {
           $inc: { likes: 1 },
         }
       );
-      console.log("Likes +1");
-      res.redirect(`/post/${comment.post}`);
+      res.redirect(`/recipes/recipe/${comment.recipe}`);
     } catch (err) {
       console.log(err);
     }
   },
   deleteComment: async (req, res) => {
     try {
-      // Find post by id
       let comment = await Comment.findById({ _id: req.params.id });
-      // Delete post from db
+      console.log(comment);
       await Comment.remove({ _id: req.params.id });
       console.log("Deleted comment");
-      res.redirect(`/post/${comment.post}`);
+      res.redirect(`/recipes/recipe/${comment.recipe}`);
     } catch (err) {
-      res.redirect(`/post/${comment.post}`);
+      res.redirect(`/recipes/recipe/${comment.recipe}`);
     }
   },
 };
