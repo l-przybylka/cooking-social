@@ -21,7 +21,7 @@ I'm always annoyed when I search for a new recipe and I have to scroll down for 
 - ...
 ## What I've learnt
 - ...
-## Further features to improve the app
+## Further improvements
 - Lazy loading of recipes
 - Styling improvements
 - Improve registering process by adding new passport strategies
