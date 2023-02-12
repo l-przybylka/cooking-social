@@ -18,10 +18,13 @@ I'm always annoyed when I search for a new recipe and I have to scroll down for 
 - Node and Express
 
 ## Difficulties encountered
-- ...
+- Implementing the QuillJS to provide users with the ability to format the text before uploading it. I got stuck on the implementing it for a bit. Specifically on 
+  how to save the data as a rich text in the database and then how to inject the data as raw HTML to the view.
+
 ## What I've learnt
-- ...
+- I gained a better understanding of how full-stack applications work
+
 ## Further improvements
 - Lazy loading of recipes
-- Styling improvements
+- Styling improvements 
 - Improve registering process by adding new passport strategies

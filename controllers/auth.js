@@ -40,14 +40,15 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || `/profile/id/${user.id}`);
+      // res.redirect(req.session.returnTo || `/profile/id/${user.id}`);
+      res.redirect(req.session.returnTo || `/`);
     });
   })(req, res, next);
 };
 
 exports.logout = (req, res) => {
   req.logout(() => {
-    console.log('User has logged out.')
+     console.log('User has logged out.')
   })
   req.session.destroy((err) => {
     if (err)
