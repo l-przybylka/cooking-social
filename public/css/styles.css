@@ -657,9 +657,18 @@ progress {
   content: "— ";
 }
 
-.img-fluid {
-  max-width: 75%;
-  height: 75%;
+@media (min-width: 576px) {
+  .img-fluid {
+    max-width: 75%;
+    height: 75%;
+  }
+}
+
+@media (max-width: 575px) {
+  .img-fluid {
+    max-width: 75%;
+    height: 350px;
+  }
 }
 
 .img-thumbnail {
