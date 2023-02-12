@@ -1,4 +1,5 @@
 # Recipes with friends
+https://recipes-with-friends.onrender.com/
 
 ## Goals:
 I'm always annoyed when I search for a new recipe and I have to scroll down for 3 minutes just to get down to the actual instructions. That's why I thought about building this app, where you and your friends can share your favourite recipes.
