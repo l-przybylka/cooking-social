@@ -22,7 +22,10 @@ module.exports = {
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean();
-   
+
+
+   console.log(recipe);
+
       res.render("recipe.ejs", {
         recipe: recipe,
         user: req.user,

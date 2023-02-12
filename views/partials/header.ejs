@@ -24,11 +24,11 @@
                 </li>
                 <% if (!isLoggedIn) { %>
                   <li><a class="dropdown-item" href="/login">Login</a></li>
-                  <% } %>
-                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                    <% if (!isLoggedIn) { %>
-                      <li><a class="dropdown-item" href="/signup">Regsiter</a></li>
-                      <% } %>
+                  <li><a class="dropdown-item" href="/signup">Regsiter</a></li>
+                <% } %>
+                <% if (isLoggedIn) { %>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <% } %>
 
           </ul>
         </li>
