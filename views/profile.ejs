@@ -1,138 +1,131 @@
 <%- include('partials/header') -%>
-  <div class="container text-center">
-    <div class="row">
+<div class="container text-center">
+  <div class="row">
 
-      <%# User section and add post %>
-
-
-        <!-- NOT SURE WHY I HAD TO USE TOSTRING HERE BUT IN THE COMMENTS THE COMPARISION WORKS FINE -->
+    <%# User section and add post %>
 
 
-        <%if(visitor._id.toString()==author._id.toString()){ %>
-          <div class="col-12 col-md-6">
-            <div>
-              <p><strong>User Name</strong>: <%= author.userName %>
-              </p>
-              <p><strong>Email</strong>: <%= author.email %>
-              </p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-            </div>
-            <div class="row justify-content-center mt-5">
-              <a class="btn btn-primary" href="/recipes">Return to Feed</a>
-            </div>
+    <!-- NOT SURE WHY I HAD TO USE TOSTRING HERE BUT IN THE COMMENTS THE COMPARISION WORKS FINE -->
 
-            <%# Post %>
-              <h2 class="pt-5">Add a recipe</h2>
-              <form action="/recipes/add-recipe" enctype="multipart/form-data" method="POST">
-                <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" placeholder="My tasty new recipe..." class="form-control" id="title"
-                    name="title" />
-                </div>
 
-                <div class="mb-3">
-                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy"
-                      checked>
-                    <label class="btn btn-outline-success" for="easy">Easy</label>
-                    <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off"
-                      value="moderate">
-                    <label class="btn btn-outline-warning" for="moderate">Moderate</label>
-                    <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard">
-                    <label class="btn btn-outline-danger" for="hard">Hard</label>
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="instructions" class="form-label">Instructions</label>
-                  <div id="instructions" class="editor-container">
+    <%if(visitor._id.toString()==author._id.toString()){ %>
+    <div class="col-12 col-md-6">
+      <div>
+        <p><strong>User Name</strong>: <%= author.userName %>
+        </p>
+        <p><strong>Email</strong>: <%= author.email %>
+        </p>
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <a class="btn btn-primary" href="/recipes">Return to Feed</a>
+      </div>
 
-                  </div>
-                  <textarea hidden class="form-control hiddenInstructions" id="instructions"
-                    name="instructions"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imgUpload" class="form-label">Image</label>
-                  <input type="file" class="form-control" id="imageUpload" name="file" />
-                </div>
-                <button id="recipeSubmitButton" type="submit" class="btn btn-primary" value="Upload">
-                  Submit
-                </button>
-              </form>
+      <%# Post %>
+      <h2 class="pt-5">Add a recipe</h2>
+      <form action="/recipes/add-recipe" enctype="multipart/form-data" method="POST">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" placeholder="My tasty new recipe..." class="form-control" id="title" name="title" />
+        </div>
+
+        <div class="mb-3">
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy" checked>
+            <label class="btn btn-outline-success" for="easy">Easy</label>
+            <input type="radio" class="btn-check" name="difficulty" id="moderate" autocomplete="off" value="moderate">
+            <label class="btn btn-outline-warning" for="moderate">Moderate</label>
+            <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard">
+            <label class="btn btn-outline-danger" for="hard">Hard</label>
           </div>
-
-
-          <div class="col-12 col-md-6">
-            <ul class="row list-unstyled">
-              <% for(var i=0; i<recipe.length; i++) { %>
-                <li class="col-6 justify-content-center mt-5">
-                  <% if (recipe[i].difficulty==='easy' ) { %>
-                    <span class="badge rounded-pill bg-success">Easy</span>
-                  <% } else if (recipe[i].difficulty==='moderate' ) { %>
-                      <span class="badge rounded-pill bg-warning">Moderate</span>
-                  <% } else { %>
-                      <span class="badge rounded-pill bg-danger">Hard</span>
-                  <% } %>
-                  <a href="/recipes/recipe/<%= recipe[i]._id%>">
-                    <%= recipe[i].title %>
-                    <img class="img-fluid" src="<%= recipe[i].image%>">
-                  </a>
-                </li>
-                <% } %>
-            </ul>
+        </div>
+        <div class="mb-3">
+          <label for="instructions" class="form-label">Instructions</label>
+          <div id="instructions" class="editor-container">
 
           </div>
-          <%} else { %>
-            <h2>Here are more posts by: <%= author.userName %></h2>
-              <div class="col-12">
-                <ul class="row list-unstyled">
-                  <% for(var i=0; i<recipe.length; i++) { %>
-                    <li class="col-6 justify-content-between mt-5">
-                      <% if (recipe[i].difficulty==='easy' ) { %>
-                        <span class="badge rounded-pill bg-success">Easy</span>
-                      <% } else if (recipe[i].difficulty==='moderate' ) { %>
-                        <span class="badge rounded-pill bg-warning">Moderate</span>
-                      <% } else { %>
-                        <span class="badge rounded-pill bg-danger">Hard</span>
-                      <% } %>
-                    <a href="/recipes/recipe/<%= recipe[i]._id%>">
-                        <%= recipe[i].title %>
-                        <img class="img-fluid" src="<%= recipe[i].image%>">
-                    </a>
-                  </li>
-                  <% } %>
-              </ul>
-
-            </div>
-            <%} %>
-              <%# Current posts by the user %>
+          <textarea hidden class="form-control hiddenInstructions" id="instructions" name="instructions"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imgUpload" class="form-label">Image</label>
+          <input type="file" class="form-control" id="imageUpload" name="file" />
+        </div>
+        <button id="recipeSubmitButton" type="submit" class="btn btn-primary" value="Upload">
+          Submit
+        </button>
+      </form>
     </div>
+
+
+    <div class="col-12 col-md-6">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<recipe.length; i++) { %>
+        <li class="col-6 justify-content-center mt-5">
+          <% if (recipe[i].difficulty==='easy' ) { %>
+          <span class="badge rounded-pill bg-success">Easy</span>
+          <% } else if (recipe[i].difficulty==='moderate' ) { %>
+          <span class="badge rounded-pill bg-warning">Moderate</span>
+          <% } else { %>
+          <span class="badge rounded-pill bg-danger">Hard</span>
+          <% } %>
+          <a href="/recipes/recipe/<%= recipe[i]._id%>">
+            <%= recipe[i].title %>
+            <img class="img-fluid" src="<%= recipe[i].image%>">
+          </a>
+        </li>
+        <% } %>
+      </ul>
+
+    </div>
+    <%} else { %>
+    <h2>Here are more posts by: <%= author.userName %></h2>
+    <div class="col-12">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<recipe.length; i++) { %>
+        <li class="col-6 justify-content-between mt-5">
+          <% if (recipe[i].difficulty==='easy' ) { %>
+          <span class="badge rounded-pill bg-success">Easy</span>
+          <% } else if (recipe[i].difficulty==='moderate' ) { %>
+          <span class="badge rounded-pill bg-warning">Moderate</span>
+          <% } else { %>
+          <span class="badge rounded-pill bg-danger">Hard</span>
+          <% } %>
+          <a href="/recipes/recipe/<%= recipe[i]._id%>">
+            <%= recipe[i].title %>
+            <img class="img-fluid" src="<%= recipe[i].image%>">
+          </a>
+        </li>
+        <% } %>
+      </ul>
+
+    </div>
+    <%} %>
+    <%# Current posts by the user %>
   </div>
+</div>
 
-  </div>
-  </div>
-  <!-- Include the Quill library -->
-  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-
-  <script>
-    // <!-- Initialize Quill editor -->
-    var Delta = Quill.import('delta');
-    var quill = new Quill('.editor-container', {
-      theme: 'snow'
-    });
-
-    const quillEditor = document.getElementsByClassName('editor-container')[0]
-    const hiddenInstructions = document.getElementsByClassName('hiddenInstructions')[0]
-
-    quillEditor.addEventListener('focusout', update)
+</div>
+</div>
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 
-    function update() {
-      hiddenInstructions.textContent = quill.root.innerHTML
-    }
+<script>
+  // <!-- Initialize Quill editor -->
+  var Delta = Quill.import('delta');
+  var quill = new Quill('.editor-container', {
+    theme: 'snow'
+  });
+
+  const quillEditor = document.getElementsByClassName('editor-container')[0]
+  const hiddenInstructions = document.getElementsByClassName('hiddenInstructions')[0]
+
+  quillEditor.addEventListener('focusout', update)
 
 
+  function update() {
+    hiddenInstructions.textContent = quill.root.innerHTML
+  }
+</script>
 
-  </script>
-
-  <%- include('partials/footer') -%>
+<%- include('partials/footer') -%>
